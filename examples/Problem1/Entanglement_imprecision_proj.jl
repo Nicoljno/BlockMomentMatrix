@@ -1,15 +1,9 @@
 using BlockMatrixHierarchy
 using MosekTools
 using JuMP
-using MathOptInterface
 using LinearAlgebra
-using SparseArrays
-using SplitApplyCombine
 using Ket
 using Hypatia
-using FileIO, JLD2
-using Plots
-import ComplexOptInterface
 
 d = 9
 num_parties::Int8 = 2

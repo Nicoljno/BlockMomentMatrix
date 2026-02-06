@@ -1,20 +1,12 @@
-name = "BlockMatrixHierarchy"
-uuid = "330a30cc-8a6d-4336-8860-9972d3ec2480"
-version = "0.1.0"
-authors = ["Nicola <nicolaide@hotmail.it>"]
-
 [deps]
+BlockMatrixHierarchy = "330a30cc-8a6d-4336-8860-9972d3ec2480"
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+Hypatia = "b99e6be6-89ff-11e8-14f8-45c827f4f8f2"
 IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
 JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
 Ket = "412c778c-4733-41d8-b706-9e072557ba34"
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 MosekTools = "1ec41992-ff65-5c91-ac43-2df89e9693a4"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
-
-[compat]
-IterTools = "1.10.0"
-JuMP = "1.29.4"
-Ket = "0.8.1"
-LinearAlgebra = "1.12.0"
-MosekTools = "0.15.10"
-SparseArrays = "1.12.0"

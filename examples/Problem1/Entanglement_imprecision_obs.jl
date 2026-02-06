@@ -1,13 +1,9 @@
 using BlockMatrixHierarchy
 using MosekTools
 using JuMP
-using MathOptInterface
 using LinearAlgebra
-using SparseArrays
-using SplitApplyCombine
 using Ket
 using Hypatia
-import ComplexOptInterface
 
 d = 4
 num_parties::Int8 = 2

@@ -49,8 +49,7 @@ savefig("Ent_imprec_pauli.pdf")
 
 using LaTeXStrings
 using Plots
-using DelimitedFiles  
-using FileIO, JLD2    
+using DelimitedFiles
 
 Q_data = readdlm("ent_imprec_data.txt")      # change delimiter if needed
 Q_y = Q_data[:, 1]
