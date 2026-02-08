@@ -3,13 +3,10 @@ using SparseArrays
 using JuMP
 using MosekTools
 using Combinatorics
-using Ket 
-using MathOptInterface
+using Ket
 using Hypatia
 using SCS
-MOI = MathOptInterface
 
-# ----------------------------------------------------------
 # Helper: bipartitions(v) — returns minimal non-repeating bipartitions of v
 function bipartitions(v::Vector{Int})
     n = length(v)
@@ -33,8 +30,7 @@ function bipartitions(v::Vector{Int})
     return parts
 end
 
-# ----------------------------------------------------------
-# Dicke state generator (kept structurally identical to MATLAB version)
+# Dicke state generator
 function dicke_state_d_dim(k::Vector{Int})
     n = sum(k)
     d = length(k)
@@ -73,7 +69,7 @@ for l = 0:(d-1)
     comp[l+1] = id[:, l+1]
 end
 
-# Use Ket.gellmann instead of GenPauli
+
 X = gellmann(2, 1, d)
 Z = gellmann(1, 2, d)
 
@@ -84,7 +80,6 @@ test_results = []
 for n_test = 1:1
     ket = sparse(dicke_state_d_dim(k))
     rho_pure = ket * ket'
-    # Visibility (JuMP variable defined below)
     Id = I(dim)
     biparts = bipartitions(v)
 
@@ -112,7 +107,7 @@ for n_test = 1:1
     # sum_i trace(X_i) <= r
     @constraint(model, real(sum(tr(Xvars[i]) for i in eachindex(Xvars))) <= r)
 
-    # Build M_vars (extensions and permutations)
+    # Build M_vars
     M_vars = Vector{Any}(undef, length(Xvars))
     dims_vec = fill(d, n)  # [d, d, ..., d]
 
@@ -127,7 +122,6 @@ for n_test = 1:1
         Xi_ext = LinearAlgebra.kron(Xvars[i], I_comp)
 
         ordered_sites = vcat(part1, part2)
-        # Use permute_systems instead of PermuteSystems
         M_vars[i] = permute_systems(Xi_ext, ordered_sites, dims_vec)
     end
 
@@ -135,7 +129,6 @@ for n_test = 1:1
     M_sum = sum(M_vars)
     rho_mixed = rho_pure.*vis + Id.*((1 - vis)/dim)
 
-    # Constraints mirroring MATLAB
     @constraint(model, Hermitian(M_sum - rho_mixed) in HermitianPSDCone())
     @constraint(model, Hermitian(Matrix(I, dim, dim) - M_sum) in HermitianPSDCone())
 

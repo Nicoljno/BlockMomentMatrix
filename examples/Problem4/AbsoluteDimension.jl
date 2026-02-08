@@ -2,9 +2,7 @@ using BlockMatrixHierarchy
 using MosekTools
 using JuMP
 using Hypatia
-using MathOptInterface
 using LinearAlgebra
-using SparseArrays
 using Ket
 
 function computational_basis_ρ(d::Integer)

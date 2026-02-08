@@ -1,7 +1,6 @@
 using LaTeXStrings
 using Plots
 using DelimitedFiles  
-using FileIO, JLD2    
 
 Q_data = readdlm("uncertainty_N5_d2.txt")      # change delimiter if needed
 Q_y = Q_data[:, 1]

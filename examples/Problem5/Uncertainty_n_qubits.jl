@@ -1,15 +1,9 @@
 using BlockMatrixHierarchy
 using MosekTools
 using JuMP
-using MathOptInterface
 using LinearAlgebra
-using SparseArrays
-using SplitApplyCombine
 using Ket
-using Plots
-using FileIO, JLD2
 using Hypatia
-import ComplexOptInterface
 
 zeta(i, j, n) = (abs(i - j) == 1 || abs(i - j) == n - 1) ? -1 : 0
 function upper_triangular(A::AbstractMatrix{String}; fill = "")
